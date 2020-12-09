@@ -1,0 +1,16 @@
+.jumbotron{
+    height: 40vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    background-color: palegreen;
+}
+.jumbotron>h1{
+    font-size: 48px;
+    font-weight: bolder;
+}
+.jumbotron> p{
+    font-size: xx-large ;
+}

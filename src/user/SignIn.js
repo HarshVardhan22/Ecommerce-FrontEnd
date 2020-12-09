@@ -1,10 +1,10 @@
-
-import React from "react"
+import React from "react";
+import Layout from "../core/Layout";
 
 const SignIn =()=> {
   return (
     <div className="App">
-signIn page
+       <Layout title = "Sign In!" description = "Sign In page for E-commerce"></Layout>
     </div>
   );
 }
