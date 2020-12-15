@@ -1,12 +1,12 @@
 import React from "react";
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import SignUp from './user/SignUp';
-import SignIn from './user/SignIn';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import SignUp from "./user/SignUp";
+import SignIn from "./user/SignIn";
 import Home from "./core/Home";
- 
 import PrivateRoute from "./Auth/PrivateRoute";
-
-import Dashboard from './user/UserDashboard';
+import AdminRoute from "./Auth/AdminRoute";
+import Dashboard from "./user/UserDashboard";
+import AdminDashboard from "./user/AdminDashboard";
 
 const Routes = () =>{
     return(
@@ -17,6 +17,7 @@ const Routes = () =>{
                 <Route path= "/signup" exact component = {SignUp}/>
                 <Route path= "/signin" exact component = {SignIn}/>
                 <PrivateRoute path="/user/dashboard" exact component = {Dashboard}/>
+                <AdminRoute path="/admin/dashboard" exact component = {AdminDashboard}/>
             </Switch>
         </BrowserRouter>
     );
