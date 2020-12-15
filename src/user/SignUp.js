@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import Layout from "../core/Layout";
-import {API} from "../Config";
+import {signUp} from "../Auth/index";
 
 
 const SignUp =()=> {
@@ -23,36 +23,39 @@ const SignUp =()=> {
 
   //can also write as : const signUp = (name,email,password)=>{ goto line 41 for more ref
 
-  const signUp = (user)=>{
+  //*************the code below has been imported to auth/index.js*******************
 
-    //using fetch to send data to backend
+  // const signUp = (user)=>{
 
-    return fetch(`${API}signup`,{
-        method:'POST',
-        headers:{
-          Accept:'application/json',
-          "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(user)
-    }).then(res => {return res.json();})
-      .catch(err => {return console.log(err);});
+  //   //using fetch to send data to backend
+
+  //   return fetch(`${API}signup`,{
+  //       method:'POST',
+  //       headers:{
+  //         Accept:'application/json',
+  //         "Content-Type": 'application/json'
+  //       },
+  //       body: JSON.stringify(user)
+  //   }).then(res => {return res.json();})
+  //     .catch(err => {return console.log(err);});
 
 
-  };
+  // };
+
 
   const clickSubmit = (event) => {
     event.preventDefault();
-    //signUp(name,email,password) but instead of sending 3 different params 
+
+    //signUp(name,email,password) but instead of sending 3 different params
     //we can also send them as one object, say "user" with 3 props;
     //As in objects is the name of prop is same as the value i.e apple:apple, them we can write only apple
     //as in this case : signUp({name:name,email:email,password:password}) === |
     //                                                                        V
-  
-    signUp({name,email,password}).then(data => { 
-      if(data.error){
-        setValues({...values,error:data.error,success:false})
-      }
-      else{
+    
+    signUp({ name, email, password }).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error, success: false });
+      } else {
         setValues({
           ...values,
           name: "",
@@ -60,9 +63,9 @@ const SignUp =()=> {
           password: "",
           error: "", //if user has typo or something
           success: true,
-        })
+        });
       }
-    })
+    });
   }
 
 

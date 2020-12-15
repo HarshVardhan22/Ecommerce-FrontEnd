@@ -1,6 +1,6 @@
 import React from "react";
 import{Link,withRouter} from "react-router-dom";
-
+import {signOut} from '../Auth/index'
 //the function isActive is used to determine which tab is clicked by the user ie home, signIn or Signup
 //it accepts two arguments history and path where history.location.pathname is browser attribute
 //path is the address that has been requested by the user
@@ -22,6 +22,14 @@ const Menu =({ history })=> {
           </li>
           <li className="nav-item">
               <Link className = "nav-link" to="/signin" style = {isActive(history,"/signin")}>Sign In</Link>
+          </li>
+          <li className="nav-item">
+              <span className = "nav-link" 
+              onClick={()=> signOut(()=>{
+                  history.push("/")//since the function singOut needs a callback argument we will redirect the user to homePage
+                  //it performs the same funtion as "redirect function"
+              })}
+              style = {{cursor:"pointer",color:"#ffffff"}}>Sign Out</span>
           </li>
 
       </ul>
