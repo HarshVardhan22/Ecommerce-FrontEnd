@@ -1,4 +1,4 @@
-import React,{Fragment} from "react";
+import React,{Fragment} from "react";//https://reactjs.org/docs/fragments.html 
 import{Link,withRouter} from "react-router-dom";
 import {signOut, isAuthenticated} from '../Auth/index'
 //the function isActive is used to determine which tab is clicked by the user ie home, signIn or Signup
@@ -19,7 +19,8 @@ const Menu =({ history })=> {
           </li>
 
           {!isAuthenticated() && (
-              <Fragment>
+              <Fragment> 
+              {/* it is used to render something without div in react as using the DIV here will change the styling of page*/}
               <li className="nav-item">
               <Link className = "nav-link" to="/signup" style = {isActive(history,"/signup")}>Sign Up</Link>
           </li>
@@ -41,6 +42,10 @@ const Menu =({ history })=> {
           </li>
             </div>
         )}
+
+        <li className="nav-item">
+              <Link className = "nav-link" to="/dashboard" style = {isActive(history,"/dashboard")}>Dashboard</Link>
+          </li>
 
       </ul>
     );
