@@ -1,6 +1,6 @@
-import React from "react";
+import React,{Fragment} from "react";
 import{Link,withRouter} from "react-router-dom";
-import {signOut} from '../Auth/index'
+import {signOut, isAuthenticated} from '../Auth/index'
 //the function isActive is used to determine which tab is clicked by the user ie home, signIn or Signup
 //it accepts two arguments history and path where history.location.pathname is browser attribute
 //path is the address that has been requested by the user
@@ -17,13 +17,21 @@ const Menu =({ history })=> {
           <li className="nav-item">
               <Link className = "nav-link" to="/" style = {isActive(history,"/")}>Home</Link>
           </li>
-          <li className="nav-item">
+
+          {!isAuthenticated() && (
+              <Fragment>
+              <li className="nav-item">
               <Link className = "nav-link" to="/signup" style = {isActive(history,"/signup")}>Sign Up</Link>
           </li>
           <li className="nav-item">
               <Link className = "nav-link" to="/signin" style = {isActive(history,"/signin")}>Sign In</Link>
           </li>
-          <li className="nav-item">
+              </Fragment>
+          )}
+        
+        {isAuthenticated() && (
+            <div>
+            <li className="nav-item">
               <span className = "nav-link" 
               onClick={()=> signOut(()=>{
                   history.push("/")//since the function singOut needs a callback argument we will redirect the user to homePage
@@ -31,6 +39,8 @@ const Menu =({ history })=> {
               })}
               style = {{cursor:"pointer",color:"#ffffff"}}>Sign Out</span>
           </li>
+            </div>
+        )}
 
       </ul>
     );

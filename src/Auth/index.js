@@ -55,3 +55,20 @@ export const signUp = (user)=>{
       .catch(err => {return console.log(err);})
     }
   }
+
+
+  //the purpose of isAuthenticated funct is to check whether the user is lloggged in or not
+  //and on that basis either signUp + signIn or signOut option will be shown to the user
+  
+  export const isAuthenticated = () => {
+    if(typeof window == "undefined"){
+      return false;
+    }
+
+    if(localStorage.getItem('jwt')){
+      return JSON.parse(localStorage.getItem('jwt'))
+    }
+
+    else 
+      return false;
+  }
