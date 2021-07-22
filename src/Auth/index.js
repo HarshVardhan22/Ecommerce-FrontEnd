@@ -32,7 +32,7 @@ export const signUp = (user)=>{
   };
 
 
-  // fact: the next() function is used whwere we are calling ,multiple middlewares and after 
+  // *fact: the next() function is used whwere we are calling ,multiple middlewares and after 
   export const authenticate = (data,next) =>{
     //first we check window which is a browser funtion is defined or not
     if(typeof window!==undefined){

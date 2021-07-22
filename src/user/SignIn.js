@@ -9,8 +9,8 @@ const SignIn =()=> {
   const {user} = isAuthenticated()
 
   const [values, setValues] = useState({
-    email: "user3@gmail.com",
-    password: "user3user3",
+    email: "hsinha31@gmail.com",
+    password: "harsh1234",
     error: "", //if user has typo or something
     loading: false,
     redirectToReferrer: false
@@ -88,12 +88,14 @@ const SignIn =()=> {
     
     const redirectUser=()=>{
       if(redirectToReferrer){
-        if(user && user.role==1)
+        if(user && user.role===1)
           return <Redirect to="/admin/dashboard"/>
         else 
           return <Redirect to="/user/dashboard"/>
       }
-    }
+      if(isAuthenticated())
+        return <Redirect to="/"/>   
+  }
 
   return (
     <div className="App">
