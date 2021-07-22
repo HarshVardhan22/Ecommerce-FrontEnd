@@ -1,10 +1,9 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Layout from "../core/Layout";
-import {signUp} from "../Auth/index";
-
-
-const SignUp =()=> {
-
+import { signUp } from "../Auth/index";
+import Home from "../core/Home";
+import style from "./SignUp.module.css";
+const SignUp = () => {
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -13,7 +12,7 @@ const SignUp =()=> {
     success: false,
   });
 
-  const {name,email,password,error,success} = values; //destructuring the object so that its easy to access the data inside
+  const { name, email, password, error, success } = values; //destructuring the object so that its easy to access the data inside
 
   //handlechange is a higher order function i.e its a function which returns another function
   //changed const handleChange = name => event => {
@@ -39,9 +38,7 @@ const SignUp =()=> {
   //   }).then(res => {return res.json();})
   //     .catch(err => {return console.log(err);});
 
-
   // };
-
 
   const clickSubmit = (event) => {
     event.preventDefault();
@@ -51,7 +48,7 @@ const SignUp =()=> {
     //As in objects is the name of prop is same as the value i.e apple:apple, them we can write only apple
     //as in this case : signUp({name:name,email:email,password:password}) === |
     //                                                                        V
-    
+
     signUp({ name, email, password }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
@@ -66,72 +63,78 @@ const SignUp =()=> {
         });
       }
     });
-  }
+  };
 
+  const signUpForm = () => (
+    <form>
+      <h1>Sign-Up</h1>
+      <div className=" form-group pb-3 pt-3">
+        <label className="text-muted">Name</label>
+        <input
+          onChange={handleChange("name")}
+          type="text"
+          className="form-control"
+          value={name}
+        />
+      </div>
 
- 
-  const signUpForm = () => 
-    (
-      <form>
-        <div className=" form-group pb-3 pt-3">
-          <label className="text-muted">Name</label>
-          <input
-            onChange={handleChange("name")}
-            type="text"
-            className="form-control"
-            value = {name}
-          />
-        </div>
+      <div className=" form-group pb-3">
+        <label className="text-muted">Email</label>
+        <input
+          onChange={handleChange("email")}
+          type="email"
+          className="form-control"
+          value={email}
+        />
+      </div>
 
-        <div className=" form-group pb-3">
-          <label className="text-muted">Email</label>
-          <input
-            onChange={handleChange("email")}
-            type="email"
-            className="form-control"
-            value = {email}
-          />
-        </div>
+      <div className=" form-group pb-3">
+        <label className="text-muted">Password</label>
+        <input
+          onChange={handleChange("password")}
+          type="password"
+          className="form-control"
+          value={password}
+        />
+      </div>
+      <button onClick={clickSubmit} className="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  );
 
-        <div className=" form-group pb-3">
-          <label className="text-muted">Password</label>
-          <input
-            onChange={handleChange("password")}
-            type="password"
-            className="form-control"
-            value = {password}
-          />
-        </div>
-        <button onClick = {clickSubmit} className="btn btn-primary">Submit</button>
-      </form>
-    );
-    
-    const showError = () =>
-      (<div className="alert alert-danger" style={{display:error?'':'none'}}>
-        {error}
-      </div>);
-    
-    const showSuccess = () =>
-      (<div className="alert alert-info" style={{display:success?'':'none'}}>
-        New account created!. Please Sign in.
-      </div>);
-    
-  
-
-  return (
-    <div className="App">
-      <Layout
-        title="Sign Up!"
-        description="Sign Up page for E-commerce"
-        className="container col-md-6 ofset-md-3"
-      >
-        {showError()}
-        {showSuccess()}
-        {signUpForm()}
-      </Layout>
-      {/* {JSON.stringify(values)} */}
+  const showError = () => (
+    <div
+      className="alert alert-danger mt-2"
+      style={{ display: error ? "" : "none" }}
+    >
+      {error}
     </div>
   );
-}
+
+  const showSuccess = () => (
+    <div
+      className="alert alert-info mt-2"
+      style={{ display: success ? "" : "none" }}
+    >
+      New account created!. Please Sign in.
+    </div>
+  );
+
+  return (
+    <div className={style.container}>
+
+      <div className={style.rightContainer}>
+        <Home />
+      </div>
+
+      <div className={style.leftContainer}>
+        {signUpForm()}
+        {showError()}
+        {showSuccess()}
+      </div>
+    </div>
+  );
+};
 
 export default SignUp;

@@ -2,8 +2,8 @@ import React,{useState} from "react";
 import Layout from "../core/Layout";
 import {signIn,authenticate,isAuthenticated} from "../Auth/index";
 import { Redirect } from "react-router-dom";
-
-
+import Home from "../core/Home";
+import style from "./SignIn.module.css";
 const SignIn =()=> {
 
   const {user} = isAuthenticated()
@@ -53,6 +53,7 @@ const SignIn =()=> {
   const signInForm = () => 
     (
       <form>
+      <h1>Sign-In</h1>
         <div className=" form-group pb-3 pt-3">
           <label className="text-muted">Email</label>
           <input
@@ -90,7 +91,7 @@ const SignIn =()=> {
       if(redirectToReferrer){
         if(user && user.role===1)
           return <Redirect to="/admin/dashboard"/>
-        else 
+        else if(user && user.role===0)
           return <Redirect to="/user/dashboard"/>
       }
       if(isAuthenticated())
@@ -98,19 +99,20 @@ const SignIn =()=> {
   }
 
   return (
-    <div className="App">
-      <Layout
-        title="Sign In!"
-        description="Sign In page for E-commerce"
-        className="container col-md-6 ofset-md-3"
-      >
-        {showError()}
+    <div className={style.container}>
+
+    <div className={style.rightContainer}>
+      <Home />
+    </div>
+
+    <div className={style.leftContainer}>
+    {showError()}
         {showLoading()}
         {signInForm()}
         {redirectUser()}
-      </Layout>
-      {/* {JSON.stringify(values)} */}
     </div>
+  </div>
+   
   );
 }
 
