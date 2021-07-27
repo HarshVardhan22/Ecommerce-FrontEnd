@@ -3,12 +3,14 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from "../Auth";
 import { Link } from "react-router-dom";
 import { createCategory } from "./ApiAdmin";
+import styles from "./AddCategory.module.css"
+import {ImCross} from 'react-icons/im'
 
 const AddCategory = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
- const [tempName,setTempName] = useState("");
+  const [tempName, setTempName] = useState("");
   const { user, token } = isAuthenticated();
 
   const handleChange = (e) => {
@@ -22,31 +24,36 @@ const AddCategory = () => {
     setSuccess(false);
 
     //make req to API to create category
-    createCategory(user._id,token, {name})
-    .then(data => {
-        if(data.error){
-            setError(true)
-        }
-        else{
-            setError("");
-            setTempName( name)
-            setSuccess(true);
-            setName("");
-        }
-    })
+    createCategory(user._id, token, { name }).then((data) => {
+      if (data.error) {
+        setTempName(name);
+        setError(true);
+      } else {
+        setError("");
+        setTempName(name);
+        setSuccess(true);
+        setName("");
+      }
+    });
   };
 
-  const showSuccess =() =>{
-      if(success){
-          return <h3 className="text-success">{tempName} is created</h3>
-      }
-  }
-
-  const showError =() =>{
-    if(error){
-        return <h3 className="text-danger">{name} category already present!</h3>
+  const showSuccess = () => {
+    if (success) {
+      return (<div className={styles.alert}>
+        <h5 className="text-success">{tempName} is created</h5>
+        <ImCross style={{marginLeft:"10px",marginBottom:"5px"}} onClick={()=>{setSuccess(false)}}/>
+      </div>);
     }
-}
+  };
+
+  const showError = () => {
+    if (error) {
+      return (<div className={styles.alert}>
+        <h5 className="text-danger">{tempName} is already present</h5>
+        <ImCross style={{marginLeft:"10px",marginBottom:"5px"}} onClick={()=>{setError(false)}}/>
+      </div>);
+    }
+  };
 
   const newCategoryForm = () => (
     <form onSubmit={clickSubmit}>
@@ -60,23 +67,23 @@ const AddCategory = () => {
           autoFocus
           required
         />
-        
       </div>
       <button className="btn btn-outline-primary">Add</button>
     </form>
   );
 
   return (
-    
     <Layout
-      title="Dashboard"
+      title="Create Category"
       description={`Hi, ${user.name}! Ready to add a new Category?`}
     >
-      <div className="row">
-        <div className="col-md-8 offset-md-2">
-        {showSuccess()}
+      <div className={styles.container}>
+        <div className="col-6">
+         {showSuccess()}
         {showError()}
-        {newCategoryForm()}</div>
+
+          {newCategoryForm()}
+        </div>
       </div>
     </Layout>
   );
