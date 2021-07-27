@@ -13,7 +13,7 @@ const Layout = ({
   children,
 }) => {
   const { user } = isAuthenticated();
-  console.log(user.role);
+
   const DashboardLinks = () => {
     if (user.role == 1) return <AdminLinks />;
     else return <UserLinks />;

@@ -10,7 +10,7 @@ const AdminLinks = () => {
                     <Link className= "nav-link" to="/create/category">Create Category</Link>
                 </li>
                 <li className="list-group-item">
-                    <Link className= "nav-link" to="/create/product">Create Product</Link>
+                    <Link className= "nav-link" to="/create/product">Add Product</Link>
                 </li>
                 <li className="list-group-item">
                     <Link className= "nav-link" to="/create/product">Dummy Routing</Link>

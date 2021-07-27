@@ -19,3 +19,22 @@ export const createCategory = (userId, token, category) => {
       return console.log(err);
     });
 };
+
+export const createProduct = (userId, token, product) => {
+  //using fetch to send data to backend
+
+  return fetch(`${API}/product/create/${userId}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: product,
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return console.log(err);
+    });
+};
