@@ -39,8 +39,8 @@ const AddCategory = () => {
 
   const showSuccess = () => {
     if (success) {
-      return (<div className={styles.alert}>
-        <h5 className="text-success">{tempName} is created</h5>
+      return (<div className={styles.alert}  onClick={()=>{setSuccess(false)}}>
+        <p className="text-success">{tempName} is created</p>
         <ImCross style={{marginLeft:"10px",marginBottom:"5px"}} onClick={()=>{setSuccess(false)}}/>
       </div>);
     }
@@ -48,8 +48,8 @@ const AddCategory = () => {
 
   const showError = () => {
     if (error) {
-      return (<div className={styles.alert}>
-        <h5 className="text-danger">{tempName} is already present</h5>
+      return (<div className={styles.alert} onClick={()=>{setError(false)}}>
+        <p className="text-danger">{tempName} is already present</p>
         <ImCross style={{marginLeft:"10px",marginBottom:"5px"}} onClick={()=>{setError(false)}}/>
       </div>);
     }
@@ -58,7 +58,7 @@ const AddCategory = () => {
   const newCategoryForm = () => (
     <form onSubmit={clickSubmit}>
       <div className="form-group  pb-3 pt-3">
-        <label className="text-muted">Name</label>
+        <label className="text-muted" style={{fontWeight:"bold",fontSize:"20px"}}>Name</label>
         <input
           type="text"
           className="form-control"
