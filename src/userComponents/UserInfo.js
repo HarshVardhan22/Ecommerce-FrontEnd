@@ -1,19 +1,17 @@
-import React from 'react'
+import React from "react";
 import { isAuthenticated } from "../Auth/index";
-const UserInfo = () => {
-    const { user } = isAuthenticated();
-    return (
-        <div className="card m-5">
-        <h3 className="card-header">User Information</h3>
-        <ul className="list-group">
-          <li className="list-group-item">{user.name}</li>
-          <li className="list-group-item">{user.email}</li>
-          <li className="list-group-item">
-            {user.role == 1 ? "Admin" : "Registered User"}
-          </li>
-        </ul>
-      </div>
-    )
-}
+import styles from "./UserInfo.module.css"
 
-export default UserInfo
+const UserInfo = () => {
+  const { user } = isAuthenticated();
+  return (
+    <div className={styles.container}>
+      <h3>Admin Information</h3>
+      <p>{user.name}</p>
+      <p>{user.email}</p>
+      <p>{user.role == 1 ? "Admin" : "Registered User"}</p>
+    </div>
+  );
+};
+
+export default UserInfo;

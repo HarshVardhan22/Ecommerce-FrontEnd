@@ -15,8 +15,8 @@ const AdminDashboard = () => {
     >
       <div className="row">
     
-        <div className="col-9">
-          <AdminInfo />
+        <div className="col-md-6 col-sm-9" style={{paddingLeft:"0"}}>
+        <AdminInfo />
         </div>
       </div>
     </Layout>
