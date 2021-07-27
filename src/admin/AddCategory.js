@@ -58,7 +58,7 @@ const AddCategory = () => {
   const newCategoryForm = () => (
     <form onSubmit={clickSubmit}>
       <div className="form-group  pb-3 pt-3">
-        <label className="text-muted" style={{fontWeight:"bold",fontSize:"20px"}}>Name</label>
+        <label className="text-muted" style={{fontWeight:"bold",fontSize:"20px",marginBottom:"10px"}}>Name</label>
         <input
           type="text"
           className="form-control"
@@ -78,7 +78,7 @@ const AddCategory = () => {
       description={`Hi, ${user.name}! Ready to add a new Category?`}
     >
       <div className={styles.container}>
-        <div className="col-6">
+        <div className="col-md-6 col-sm-9">
          {showSuccess()}
         {showError()}
 
