@@ -1,0 +1,11 @@
+.container{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background: #e0e0e0;
+    box-shadow: 7px 7px 14px #acacac, -7px -7px 14px #ffffff;
+}
+.container>li{
+    background: #e0e0e0;
+}

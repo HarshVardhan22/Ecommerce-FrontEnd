@@ -67,6 +67,7 @@ const AddCategory = () => {
   );
 
   return (
+    
     <Layout
       title="Dashboard"
       description={`Hi, ${user.name}! Ready to add a new Category?`}
