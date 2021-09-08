@@ -7,3 +7,17 @@
     background: #e0e0e0;
     box-shadow: 7px 7px 14px #acacac, -7px -7px 14px #ffffff;
 }
+.alert{
+
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #e0e0e0;
+    box-shadow: 7px 7px 14px #acacac, -7px -7px 14px #ffffff;
+}
+.alert>p{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+}
