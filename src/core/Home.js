@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css"
 import { getProducts } from "./apiCore";
+import Card from "./Card";
 const Home =()=> { 
   const [productsBySell, setProductsBySell] = useState([]);
   const [productsByArrival, setProductsByArrival] = useState([]);  
@@ -34,8 +35,18 @@ const Home =()=> {
          <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </h2>
          <h2>nostrum dolore amet ullam maiores, </h2>
          <h2>akjhfkjab kjbaijsbdjka kasb</h2>
-         {JSON.stringify(productsByArrival)}
-         {JSON.stringify(productsBySell)}
+         <h2 className="mb-4">Best Sellers</h2>
+         {productsBySell.map((product,index)=>{
+          return(
+            <Card key={index} product={product}></Card>
+          ) 
+         })}
+         <h2 className="mb-4">New Arrivals</h2>
+         {productsByArrival.map((product,index)=>{
+          return(
+            <Card key={index} product={product}></Card>
+          ) 
+         })}
       </div>
     );
   }
