@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../Auth";
 import { Link } from "react-router-dom";
-import { createProduct } from "./ApiAdmin";
+import { createProduct , getCategories} from "./ApiAdmin";
 import styles from "./AddProduct.module.css";
 const AddProduct = () => {
   const { user, token } = isAuthenticated();
@@ -41,9 +41,23 @@ const AddProduct = () => {
     formData,
   } = values;
 
+
+  const init = () => {
+    getCategories().then(data=>{
+      if(data.error){
+        setValues({...values,error:data.error})
+      } else{
+        
+        setValues({...values, categories:data, formData: new FormData})
+      }
+    })
+  }
+
   useEffect(() => {
-    setValues({ ...values, formData: new FormData() });
+    init();
   }, []);
+
+
 
   const handleChange = (name) => (event) => {
     //we do the below line bcz
@@ -130,6 +144,7 @@ const AddProduct = () => {
             <option value="1">Yes </option>
           </select>
         </div>
+      
 
         <div className="form-group">
           <label>Category</label>
@@ -139,9 +154,12 @@ const AddProduct = () => {
             onChange={handleChange("category")}
           >
             {/* we can fetch the catg from backend here */}
-            <option value="">--select--</option>
-            <option value="60f94a9758103b2a5c2a2dab">Node</option>
-            <option value="60f94a9758103b2a5c2a2dab">Pyhton</option>
+            <option >Please Select</option>
+            {
+              categories && categories.map((cat,index)=>
+                <option key={index} value={cat._id}>{cat.name}</option>
+              )
+            }
           </select>
         </div>
 

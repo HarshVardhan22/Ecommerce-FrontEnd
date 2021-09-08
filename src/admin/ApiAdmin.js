@@ -38,3 +38,13 @@ export const createProduct = (userId, token, product) => {
       return console.log(err);
     });
 };
+
+//function to retrive all the categoreis from the BE
+
+export const getCategories = () => {
+  return fetch((`${API}/categories`),{
+    method :"GET"
+  })
+  .then(response=>response.json())
+  .catch(err=>console.log(err))
+}
