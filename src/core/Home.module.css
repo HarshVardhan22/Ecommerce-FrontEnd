@@ -1,12 +1,13 @@
 .container{
     display: flex;
     height: 100vh;
+    max-width: 90vw;
     font-family: Georgia, 'Times New Roman', Times, serif;
     flex-direction: column;
 }
 .container>*{
     margin-left: 10%;
-    font-family: ;
+    margin-right: 0.1%;
 }
 
 .container> h1{
