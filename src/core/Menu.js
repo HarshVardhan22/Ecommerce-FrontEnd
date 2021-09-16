@@ -2,6 +2,7 @@ import React, { Fragment } from "react"; //https://reactjs.org/docs/fragments.ht
 import { Link, withRouter } from "react-router-dom";
 import { signOut, isAuthenticated } from "../Auth/index";
 import style from "./Menu.module.css";
+import { itemTotal } from "./cartHelpers";
 
 //the function isActive is used to determine which tab is clicked by the user ie home, signIn or Signup
 //it accepts two arguments history and path where history.location.pathname is browser attribute
@@ -20,6 +21,23 @@ const Menu = ({ history }) => {
           Home
         </Link>
       </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/shop" style={isActive(history, "/shop")}>
+          Shop
+        </Link>
+      </li>
+      <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/cart")}
+                    to="/cart"
+                >
+                    Cart{" "}
+                    <sup>
+                        <small className="cart-badge">{itemTotal()}</small>
+                    </sup>
+                </Link>
+            </li>
 
       {!isAuthenticated() && (
         <Fragment>

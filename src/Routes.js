@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignUp from "./user/SignUp";
 import SignIn from "./user/SignIn";
+import Product from './core/Product';
 import Home from "./core/Home";
+import Shop from "./core/Shop";
 import PrivateRoute from "./Auth/PrivateRoute";
 import AdminRoute from "./Auth/AdminRoute";
 import Dashboard from "./user/UserDashboard";
@@ -10,6 +12,7 @@ import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import Menu from "./core/Menu";
+import Cart from "./core/Cart";
 const Routes = () =>{
     return(
         
@@ -17,8 +20,11 @@ const Routes = () =>{
         <Menu/>
             <Switch>
                 <Route path= "/" exact component = {Home}/>
+                <Route path= "/shop" exact component = {Shop}/>
                 <Route path= "/signup" exact component = {SignUp}/>
                 <Route path= "/signin" exact component = {SignIn}/>
+                <Route path="/cart" exact component={Cart} />
+                <Route path="/product/:productId" exact component={Product} />
                 <PrivateRoute path="/user/dashboard" exact component = {Dashboard}/>
                 <AdminRoute path="/admin/dashboard" exact component = {AdminDashboard}/>
                 <AdminRoute path="/create/category" exact component = {AddCategory}/>
