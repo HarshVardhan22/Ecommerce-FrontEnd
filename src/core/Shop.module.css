@@ -2,7 +2,7 @@
     display: flex;
     height: 100vh;
     max-width: 90vw;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:sans-serif;
     flex-direction: column;
 }
 .container>*{
