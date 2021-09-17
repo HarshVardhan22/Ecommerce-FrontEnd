@@ -1,14 +1,14 @@
 import React from 'react'
 import { isAuthenticated } from "../Auth/index";
 import { Link } from "react-router-dom";
-
+import styles from "./UserLinks.module.css"
 const UserLinks = () => {
     return (
-        <div className="card mt-5">
+        <div className={styles.container}>
         <h4 className="card-header">User Links</h4>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link className="nav-link" to="/cart">
+            <Link className="nav-link" to="/user/dashboard">
               Profile
             </Link>
           </li>
