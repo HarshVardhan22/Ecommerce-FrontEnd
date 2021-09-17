@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from "./ShowImage.module.css"
 import { API } from '../Config'
 const ShowImage = ({item,url}) => {
     return (
-        <div>
-            <img src={`${API}/${url}/photo/${item._id}`} alt={item.name} className="mb-3" style={{boxSizing:"border-box",width:"100%",height:"30%",objectFit: "cover" }}/>
+        <div >
+            <img src={`${API}/${url}/photo/${item._id}`} alt={item.name} className={styles.cardImage} />
         </div>
     )
 }

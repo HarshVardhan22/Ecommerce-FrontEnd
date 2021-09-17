@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import styles from "./Card.module.css";
 import ShowImage from "./ShowImage";
+import { API } from '../Config'
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 const Card = ({
   product,
@@ -93,14 +94,18 @@ const Card = ({
     );
   };
   return (
-    <div className="col-sm-8 col-md-8 col-l-6 col-xl-4 mb-3 mt-3">
+    <div className="col-4 mb-3 mt-3">
       <div className="card">
-        <div className="card-header">
-          <h2>{product.name}</h2>
+        <div className="card-header text-center">
+          <h3>{product.name}</h3>
         </div>
         <div className="card-body">
           {shouldRedirect(redirect)}
-          <ShowImage item={product} url="product" />
+         
+            {/* <ShowImage item={product} url="product" /> */}
+            <img src={`${API}/product/photo/${product._id}`} alt={product.name} className={styles.cardImage} />
+      
+
           <p>{product.description.substring(0, 100)}</p>
           <p>{product.price}</p>
           <br></br>

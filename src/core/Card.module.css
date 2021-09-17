@@ -15,4 +15,13 @@
     margin: 10px;
   }
 
+  .imgContainer{
+    max-width: 18vw ;
+  }
+  .cardImage{
+    height: 30vh;
+    width:100%;
+    object-fit: cover;
+}
+
 

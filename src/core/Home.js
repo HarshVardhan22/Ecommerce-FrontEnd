@@ -32,15 +32,17 @@ const Home = () => {
       
      
     
-      <h2 className="mb-4">Best Sellers</h2>
+      
       <div className="row">
+      <h2 className="m-4">Best Sellers</h2>
         {productsBySell.map((product, index) => {
           return <Card key={index} product={product}></Card>;
         })}
       </div>
 
-      <h2 className="mb-4">New Arrivals</h2>
+      
       <div className="row">
+      <h2 className="mb-4">New Arrivals</h2>
         {productsByArrival.map((product, index) => {
           return <Card key={index} product={product}></Card>;
         })}

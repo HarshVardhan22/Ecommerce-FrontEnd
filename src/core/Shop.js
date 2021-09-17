@@ -96,10 +96,9 @@ const Shop = () => {
 
     return (
         <div className={styles.container}>
-        <h1>Shop Page</h1>
-        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </h2>
-        <h2>nostrum dolore amet ullam maiores, </h2>
-        <h2>akjhfkjab kjbaijsbdjka kasb</h2>
+        <div className={styles.header}>
+    <h1 className={`${styles.jumbo} ${styles.jumbo_text_animated}`}>Shop</h1>
+    </div>
       
 
         <div className="row">
