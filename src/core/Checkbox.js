@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import styles from "./Checkbox.module.css"
 const Checkbox = ({ categories, handleFilters }) => {
     const [checked, setCheked] = useState([]);
 

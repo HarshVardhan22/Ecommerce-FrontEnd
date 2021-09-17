@@ -106,9 +106,9 @@ const Card = ({
             <img src={`${API}/product/photo/${product._id}`} alt={product.name} className={styles.cardImage} />
       
 
-          <p>{product.description.substring(0, 100)}</p>
-          <p>{product.price}</p>
-          <br></br>
+          <h5 className="mt-2">{product.description.substring(0, 100)}</h5>
+          <h5>₹ {" "}{product.price}</h5>
+          
           {showViewButton(showViewProductButton)}
 
           {showAddToCartBtn(showAddToCartButton)}

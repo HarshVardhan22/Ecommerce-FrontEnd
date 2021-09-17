@@ -101,17 +101,17 @@ const Shop = () => {
     </div>
       
 
-        <div className="row">
+        <div className="row mt-5">
                 <div className="col-2">
                     <h4>Filter by categories</h4>
-                    <ul>
+                    
                         <Checkbox
                             categories={categories}
                             handleFilters={filters =>
                                 handleFilters(filters, "category")
                             }
                         />
-                    </ul>
+                    
 
                     {/* <h4>Filter by price range</h4>
                     <div>
