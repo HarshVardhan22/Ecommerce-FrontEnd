@@ -16,11 +16,12 @@ const Cart = () => {
 
     const showItems = items => {
         return (
-            <div>
+            <div className>
                 <h2>Your cart has {`${items.length}`} items</h2>
                 <hr />
                 {items.map((product, i) => (
                     <Card
+                    styleClass="col-6 mb-3 mt-3"
                         key={i}
                         product={product}
                         showAddToCartButton={false}
@@ -42,14 +43,14 @@ const Cart = () => {
 
     return (
         <div className={styles.container}>
-        <h1>Shop Page</h1>
-        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </h2>
-        <h2>nostrum dolore amet ullam maiores, </h2>
-        <h2>akjhfkjab kjbaijsbdjka kasb</h2>
+        <div className={styles.header}>
+        <h1 className={`${styles.jumbo} ${styles.jumbo_text_animated}`}>Cart</h1>
+        </div>
+          
             <div className="row">
-                <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
+                <div className="col-8">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 
-                <div className="col-6">
+                <div className="col-4">
                     <h2 className="mb-4">Your cart summary</h2>
                     <hr />
                     <Checkout products={items} setRun={setRun} run={run} />

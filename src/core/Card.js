@@ -5,6 +5,7 @@ import ShowImage from "./ShowImage";
 import { API } from '../Config'
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 const Card = ({
+  styleClass="col-4 mb-3 mt-3",
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
@@ -94,12 +95,12 @@ const Card = ({
     );
   };
   return (
-    <div className="col-4 mb-3 mt-3">
+    <div className={styleClass}>
       <div className="card">
         <div className="card-header text-center">
           <h3>{product.name}</h3>
         </div>
-        <div className="card-body">
+        <div className="card-body main">
           {shouldRedirect(redirect)}
          
             {/* <ShowImage item={product} url="product" /> */}
@@ -107,7 +108,7 @@ const Card = ({
       
 
           <h5 className="mt-2">{product.description.substring(0, 100)}</h5>
-          <h5>₹ {" "}{product.price}</h5>
+          <h5>₹{product.price}</h5>
           
           {showViewButton(showViewProductButton)}
 
