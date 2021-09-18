@@ -87,7 +87,7 @@ const Card = ({
       showAddToCartButton && (
         <button
           onClick={addToCart}
-          className="btn btn-outline-warning mt-2 mb-2 card-btn-1  "
+          className="btn btn-outline-warning text-dark mt-2 mb-2 card-btn-1  "
         >
           Add to cart
         </button>
@@ -107,7 +107,7 @@ const Card = ({
             <img src={`${API}/product/photo/${product._id}`} alt={product.name} className={styles.cardImage} />
       
 
-          <h5 className="mt-2">{product.description.substring(0, 100)}</h5>
+          <h5 className="mt-2">{product.description.substring(0,50)}</h5>
           <h5>₹{product.price}</h5>
           
           {showViewButton(showViewProductButton)}

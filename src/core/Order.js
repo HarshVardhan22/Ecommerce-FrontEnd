@@ -1,6 +1,6 @@
 import React from "react";
 // import "./Order.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { emptyCart } from "./cartHelpers";
 const Order = () => {
   let history = useHistory();

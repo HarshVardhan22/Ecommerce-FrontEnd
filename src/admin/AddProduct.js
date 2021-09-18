@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../Auth";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { createProduct, getCategories } from "./ApiAdmin";
 import styles from "./AddProduct.module.css";
 import {ImCross} from 'react-icons/im'
